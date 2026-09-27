@@ -13,10 +13,10 @@ MyPawnTest >> testFirstMove [
 
 	squares := pawn targetSquares.
 	self
-		assertCollection: squares
-		includesAll:
+		assertCollection: (squares collect: [ :s |s name ])
+		equals:
 			(#(e5 e6) collect: [ :name |
-				 board at: name ])
+				 board at: name ]; asOrderedCollection )
 ]
 
 { #category : 'tests' }
@@ -27,8 +27,8 @@ MyPawnTest >> testMoves [
 
 	squares := pawn targetSquares.
 	self
-		assertCollection: squares
-		includesAll:
+		assertCollection: (squares collect: [ :s |s name ])
+		equals:
 			(#(e5) collect: [ :name |
-				 board at: name ])
+				 board at: name ]; asOrderedCollection)
 ]
