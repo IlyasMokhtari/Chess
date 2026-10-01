@@ -44,7 +44,7 @@ MyPawnTest >> testDefaultBlackPawnMove [
 	squares := pawn targetSquares.
 	self
 		assertCollection: squares
-		includesAll:
+		hasSameElements:
 			(#(e3) collect: [ :name |
 				 board at: name ])
 ]
