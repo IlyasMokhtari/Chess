@@ -37,11 +37,11 @@ MyPawnTest >> testBlackPawnMoveBlockedByPawn [
 ]
 
 { #category : 'tests' }
-MyPawnTest >> testDefaultBlackPawnMove [
+MyPawnTest >> testDefaultMoveBlackPawn [
 	|pawn squares board|
 	board := MyChessBoard empty.
 	board at: 'e4' put: (pawn := MyPawn black).
-	squares := pawn targetSquares.
+	squares := pawn defaultMove.
 	self
 		assertCollection: squares
 		hasSameElements:
@@ -50,16 +50,42 @@ MyPawnTest >> testDefaultBlackPawnMove [
 ]
 
 { #category : 'tests' }
-MyPawnTest >> testDefaultWhitePawnMove [
+MyPawnTest >> testDefaultMoveWhitePawn [
 	|pawn squares board|
 	board := MyChessBoard empty.
 	board at: 'e4' put: (pawn := MyPawn white).
 
-	squares := pawn targetSquares.
+	squares := pawn defaultMove.
 	self
 		assertCollection: squares
 		hasSameElements:
 			(#(e5) collect: [ :name |
+				 board at: name ])
+]
+
+{ #category : 'tests' }
+MyPawnTest >> testFirstMoveBlackPawn [
+	|pawn squares board|
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn black).
+	squares := pawn firstMove.
+	self
+		assertCollection: squares
+		hasSameElements:
+			(#(e3 e2) collect: [ :name |
+				 board at: name ])
+]
+
+{ #category : 'tests' }
+MyPawnTest >> testFirstMoveWhitePawn [
+	|pawn squares board|
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyPawn white).
+	squares := pawn firstMove.
+	self
+		assertCollection: squares
+		hasSameElements:
+			(#(e5 e6) collect: [ :name |
 				 board at: name ])
 ]
 
