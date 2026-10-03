@@ -5,6 +5,16 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'accessing' }
+MyBlackPawn >> attackSquare [ 
+	|squareList|
+	squareList := OrderedCollection new.
+	squareList add: square down left;
+	add: square down right.
+	
+  ^ squareList select: [ :s | s hasPiece ].
+]
+
 { #category : 'as yet unclassified' }
 MyBlackPawn >> defaultMove [ 
 	|squareList|

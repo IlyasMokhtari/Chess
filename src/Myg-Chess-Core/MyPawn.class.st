@@ -8,6 +8,11 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'accessing' }
+MyPawn >> attackSquare [
+	self subclassResponsibility.
+]
+
 { #category : 'as yet unclassified' }
 MyPawn >> defaultMove [
 	self subclassResponsibility.

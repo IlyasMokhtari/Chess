@@ -6,6 +6,20 @@ Class {
 }
 
 { #category : 'tests' }
+MyWhitePawnTest >> testAttackSquare [
+	|pawn squares board|
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyWhitePawn new).
+	board at: 'd5' put: (MyBlackPawn new).
+
+	squares := pawn attackSquare.
+	self
+		assertCollection: (squares collect: [ :s |s name ])
+		equals: (#(d5) collect: [ :name |
+				 board at: name ]; asOrderedCollection )
+]
+
+{ #category : 'tests' }
 MyWhitePawnTest >> testDefaultMove [
 	|pawn squares board|
 	board := MyChessBoard empty.
