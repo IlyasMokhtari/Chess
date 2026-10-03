@@ -6,13 +6,7 @@ Class {
 }
 
 { #category : 'tests' }
-MyRookTests >> testId [
-
-	self assert: MyRook new id equals: 'R'
-]
-
-{ #category : 'tests' }
-MyRookTests >> testMoves [
+MyRookTests >> testDefaultMove [
 
 	| rook squares board |
 	board := MyChessBoard empty.
@@ -24,6 +18,12 @@ MyRookTests >> testMoves [
 		includesAll:
 			(#( e5 e6 e7 e8 d4 c4 b4 a4 f4 g4 h4 e3 e2 e1 ) collect: [ :name |
 				 board at: name ])
+]
+
+{ #category : 'tests' }
+MyRookTests >> testId [
+
+	self assert: MyRook new id equals: 'R'
 ]
 
 { #category : 'tests' }

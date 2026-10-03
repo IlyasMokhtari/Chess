@@ -6,13 +6,7 @@ Class {
 }
 
 { #category : 'tests' }
-MyBishopTests >> testId [
-
-	self assert: MyBishop new id equals: 'B'
-]
-
-{ #category : 'tests' }
-MyBishopTests >> testMoves [
+MyBishopTests >> testDefaultMove [
 
 	| bishop squares board |
 	board := MyChessBoard empty.
@@ -24,6 +18,12 @@ MyBishopTests >> testMoves [
 		includesAll:
 			(#( f5 g6 h7 f3 g2 h1 d5 c6 b7 a8 d3 c2 b1 ) collect: [ :name |
 				 board at: name ])
+]
+
+{ #category : 'tests' }
+MyBishopTests >> testId [
+
+	self assert: MyBishop new id equals: 'B'
 ]
 
 { #category : 'tests' }
