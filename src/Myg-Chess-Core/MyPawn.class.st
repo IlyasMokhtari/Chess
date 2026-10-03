@@ -31,6 +31,12 @@ MyPawn >> initialize [
 	
 ]
 
+{ #category : 'accessing' }
+MyPawn >> moveTo: aSquare [
+	super moveTo: aSquare.
+	moveStrategy := [ self defaultMove ]
+]
+
 { #category : 'rendering' }
 MyPawn >> renderPieceOn: aSquare [ 
 	
