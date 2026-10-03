@@ -10,7 +10,7 @@ MyBlackPawn >> defaultMove [
 	|squareList|
 	squareList := OrderedCollection new.
 	squareList add: square down.
-	^squareList reject: [:s | s contents hasPiece].
+	^squareList reject: [:s | s hasPiece].
 
 	
 ]
@@ -21,7 +21,7 @@ MyBlackPawn >> firstMove [
 	squareList := OrderedCollection new.
 	squareList add: square down;
 	add: square down down.
-	^squareList reject: [:s | s contents hasPiece].
+	^squareList reject: [:s | s hasPiece].
 
 	
 ]
