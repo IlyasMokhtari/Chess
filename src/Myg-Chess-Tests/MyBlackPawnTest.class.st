@@ -20,6 +20,20 @@ MyBlackPawnTest >> testAttackSquare [
 ]
 
 { #category : 'tests' }
+MyBlackPawnTest >> testCantAttackPawnOfSameColor [
+	|pawn squares board|
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyBlackPawn new).
+	board at: 'd3' put: (MyBlackPawn new).
+
+	squares := pawn attackSquare.
+	self
+		assertCollection: (squares collect: [ :s |s name ])
+		equals: (#() collect: [ :name |
+				 board at: name ]; asOrderedCollection )
+]
+
+{ #category : 'tests' }
 MyBlackPawnTest >> testDefaultMove [
 	|pawn squares board|
 	board := MyChessBoard empty.
