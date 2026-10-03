@@ -6,22 +6,22 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-MyBlackPawn >> FirstMove [ 
+MyBlackPawn >> defaultMove [ 
 	|squareList|
 	squareList := OrderedCollection new.
-	squareList add: square down;
-	add: square down down.
-	^squareList.
+	squareList add: square down.
+	^squareList reject: [:s | s contents hasPiece].
 
 	
 ]
 
 { #category : 'as yet unclassified' }
-MyBlackPawn >> defaultMove [ 
+MyBlackPawn >> firstMove [ 
 	|squareList|
 	squareList := OrderedCollection new.
-	squareList add: square down.
-	^squareList.
+	squareList add: square down;
+	add: square down down.
+	^squareList reject: [:s | s contents hasPiece].
 
 	
 ]

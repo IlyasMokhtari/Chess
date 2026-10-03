@@ -39,6 +39,5 @@ MyPawn >> renderPieceOn: aSquare [
 
 { #category : 'rendering' }
 MyPawn >> targetSquaresLegal: aBoolean [
-	^ moveStrategy value do: [ :s|
-			  s hasPiece not or: [ s contents color ~= color ] ]
+	^ moveStrategy value
 ]

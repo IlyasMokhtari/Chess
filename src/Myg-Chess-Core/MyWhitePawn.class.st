@@ -10,7 +10,7 @@ MyWhitePawn >> defaultMove [
 	|squareList|
 	squareList := OrderedCollection new.
 	squareList add: square up.
-	^squareList.
+	^squareList reject: [:s | s contents hasPiece].
 ]
 
 { #category : 'as yet unclassified' }
