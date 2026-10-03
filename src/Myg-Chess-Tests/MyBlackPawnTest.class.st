@@ -1,6 +1,6 @@
 Class {
 	#name : 'MyBlackPawnTest',
-	#superclass : 'TestCase',
+	#superclass : 'MyPawnTest',
 	#category : 'Myg-Chess-Tests',
 	#package : 'Myg-Chess-Tests'
 }
@@ -20,6 +20,19 @@ MyBlackPawnTest >> testDefaultMove [
 ]
 
 { #category : 'tests' }
+MyBlackPawnTest >> testDefautlMoveBlockedByPawn [
+	|pawn squares board|
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyBlackPawn new).
+	board at: 'e3' put: (MyBlackPawn new).
+
+	squares := pawn defaultMove.
+	self
+		assertCollection: squares 
+		equals: (#() asOrderedCollection)
+]
+
+{ #category : 'tests' }
 MyBlackPawnTest >> testFirstMove [
 	|pawn squares board|
 	board := MyChessBoard empty.
@@ -31,4 +44,17 @@ MyBlackPawnTest >> testFirstMove [
 		equals:
 			(#(e3 e2) collect: [ :name |
 				 board at: name ]; asOrderedCollection )
+]
+
+{ #category : 'tests' }
+MyBlackPawnTest >> testFirstMoveBlockedByPawn [
+	|pawn squares board|
+	board := MyChessBoard empty.
+	board at: 'e4' put: (pawn := MyBlackPawn new).
+	board at: 'e3' put: (MyBlackPawn new).
+
+	squares := pawn firstMove.
+	self
+		assertCollection: squares 
+		equals: (#() asOrderedCollection)
 ]

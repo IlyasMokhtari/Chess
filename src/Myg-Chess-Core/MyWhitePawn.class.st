@@ -14,11 +14,14 @@ MyWhitePawn >> defaultMove [
 ]
 
 { #category : 'as yet unclassified' }
-MyWhitePawn >> firstMove [
-	|squareList|
+MyWhitePawn >> firstMove [ 
+	|squareList firstSquare |
 	squareList := OrderedCollection new.
-	squareList add: square up;
-	add: square up up.
+	firstSquare:= square up.
+	firstSquare hasPiece ifTrue: [ ^ squareList].
+	squareList add: firstSquare.
+	
+	firstSquare up hasPiece ifFalse: [ squareList add: firstSquare up ].
 	^squareList.
 ]
 

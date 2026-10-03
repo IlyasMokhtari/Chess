@@ -17,11 +17,15 @@ MyBlackPawn >> defaultMove [
 
 { #category : 'as yet unclassified' }
 MyBlackPawn >> firstMove [ 
-	|squareList|
+	|squareList firstSquare |
 	squareList := OrderedCollection new.
-	squareList add: square down;
-	add: square down down.
-	^squareList reject: [:s | s hasPiece].
+	firstSquare:= square down.
+	firstSquare hasPiece ifTrue: [ ^ squareList].
+	squareList add: firstSquare.
+	
+	firstSquare down hasPiece ifFalse: [ squareList add: firstSquare down ].
+	^squareList.
+
 
 	
 ]
