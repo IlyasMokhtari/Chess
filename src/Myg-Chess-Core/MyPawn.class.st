@@ -44,7 +44,7 @@ MyPawn >> moveStrategy [
 { #category : 'accessing' }
 MyPawn >> moveTo: aSquare [
 	super moveTo: aSquare.
-	moveStrategy := [ self defaultMove ]
+	moveStrategy := [ self defaultMove , self attackSquare ]
 ]
 
 { #category : 'rendering' }
