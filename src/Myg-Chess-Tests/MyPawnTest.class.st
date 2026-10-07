@@ -23,5 +23,5 @@ MyPawnTest >> testMovedPawnSetTheMoveStrategyToDefault [
 	pawn moveTo: 'e3'.
 	
 	self
-		assert: pawn moveStrategy asString = [ self defaultMove ] asString
+		assert: pawn moveStrategy asString = [ self defaultMove , self attackSquare ] asString
 ]
