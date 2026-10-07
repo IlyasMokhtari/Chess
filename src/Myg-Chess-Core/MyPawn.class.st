@@ -32,7 +32,7 @@ MyPawn >> id [
 { #category : 'initialization' }
 MyPawn >> initialize [ 
 	super initialize.
-	moveStrategy := [ self firstMove ].
+	moveStrategy := [ self firstMove, self attackSquare ].
 	
 ]
 

@@ -12,7 +12,7 @@ MyPawnTest >> testMoveStrategySetToFirstMoveAtInitialization [
 	board at: 'e4' put: (pawn := MyBlackPawn new).
 	
 	self
-		assert: pawn moveStrategy asString = [ self firstMove ] asString
+		assert: pawn moveStrategy asString = [ self firstMove, self attackSquare ] asString
 ]
 
 { #category : 'tests' }
