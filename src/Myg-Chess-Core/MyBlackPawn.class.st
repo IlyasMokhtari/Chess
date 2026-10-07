@@ -12,7 +12,7 @@ MyBlackPawn >> attackSquare [
 	squareList add: square down left;
 	add: square down right.
 	
-  ^ squareList select: [ :s | s hasPiece and: [ s contents color ~= color] ].
+  ^ squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
 ]
 
 { #category : 'as yet unclassified' }
