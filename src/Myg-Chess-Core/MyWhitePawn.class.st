@@ -12,7 +12,9 @@ MyWhitePawn >> attackSquare [
 	squareList add: square up left;
 	add: square up right.
 	
-  ^ squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
+   squareList:= squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
+   squareList addAll: self enPassant .
+	^squareList
 ]
 
 { #category : 'as yet unclassified' }
@@ -21,6 +23,11 @@ MyWhitePawn >> defaultMove [
 	squareList := OrderedCollection new.
 	squareList add: square up.
 	^squareList reject: [:s | s hasPiece].
+]
+
+{ #category : 'as yet unclassified' }
+MyWhitePawn >> enPassant [
+	^self enPassantSquare collect: [ :s | s up ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -39,4 +46,10 @@ MyWhitePawn >> firstMove [
 MyWhitePawn >> initialize [ 
 	super initialize.
 	color:= Color white
+]
+
+{ #category : 'accessing' }
+MyWhitePawn >> moveTo: aSquare [
+    movedTwoSquare := square up up == aSquare.
+    super moveTo: aSquare
 ]

@@ -12,7 +12,9 @@ MyBlackPawn >> attackSquare [
 	squareList add: square down left;
 	add: square down right.
 	
-  ^ squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
+   squareList:= squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
+	squareList addAll: self enPassant .
+	^squareList 
 ]
 
 { #category : 'as yet unclassified' }
@@ -23,6 +25,11 @@ MyBlackPawn >> defaultMove [
 	^squareList reject: [:s | s hasPiece].
 
 	
+]
+
+{ #category : 'as yet unclassified' }
+MyBlackPawn >> enPassant [
+	^self enPassantSquare collect: [ :s | s down ].
 ]
 
 { #category : 'as yet unclassified' }
@@ -44,4 +51,10 @@ MyBlackPawn >> firstMove [
 MyBlackPawn >> initialize [ 
 	super initialize.
 	color:= Color black
+]
+
+{ #category : 'accessing' }
+MyBlackPawn >> moveTo: aSquare [
+    movedTwoSquare := square down down == aSquare.
+    super moveTo: aSquare
 ]

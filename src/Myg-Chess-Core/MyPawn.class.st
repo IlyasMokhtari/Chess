@@ -2,7 +2,8 @@ Class {
 	#name : 'MyPawn',
 	#superclass : 'MyPiece',
 	#instVars : [
-		'moveStrategy'
+		'moveStrategy',
+		'movedTwoSquare'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -16,6 +17,24 @@ MyPawn >> attackSquare [
 { #category : 'as yet unclassified' }
 MyPawn >> defaultMove [
 	self subclassResponsibility.
+]
+
+{ #category : 'as yet unclassified' }
+MyPawn >> enPassantSquare [
+    | squareList |
+    squareList := OrderedCollection new.
+    squareList
+        add: square left;
+        add: square right.
+    ^ squareList select: [ :s |
+        s notNil and: [
+            s hasPiece and: [
+                s contents color ~= color and: [
+                    s contents movedTwoSquare
+                ]
+            ]
+        ]
+    ]
 ]
 
 { #category : 'accessing' }
@@ -44,7 +63,12 @@ MyPawn >> moveStrategy [
 { #category : 'accessing' }
 MyPawn >> moveTo: aSquare [
 	super moveTo: aSquare.
-	moveStrategy := [ self defaultMove , self attackSquare ]
+	moveStrategy := [ self defaultMove , self attackSquare]
+]
+
+{ #category : 'as yet unclassified' }
+MyPawn >> movedTwoSquare [
+	^ movedTwoSquare
 ]
 
 { #category : 'rendering' }

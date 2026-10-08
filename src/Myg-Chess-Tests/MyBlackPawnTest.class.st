@@ -61,6 +61,17 @@ MyBlackPawnTest >> testDefautlMoveBlockedByPawn [
 ]
 
 { #category : 'tests' }
+MyBlackPawnTest >> testEnPassantByBlackPawn [
+| whitePawn blackPawn board squares |
+    board := MyChessBoard empty.
+    board at: 'e5' put: (whitePawn := MyWhitePawn new).
+    board at: 'd7' put: (blackPawn := MyBlackPawn new).
+    blackPawn moveTo: (board at: 'd5').
+    squares := whitePawn targetSquares.
+    self assert: (squares includes: (board at: 'd6'))
+]
+
+{ #category : 'tests' }
 MyBlackPawnTest >> testFirstMove [
 	|pawn squares board|
 	board := MyChessBoard empty.

@@ -22,6 +22,5 @@ MyPawnTest >> testMovedPawnSetTheMoveStrategyToDefault [
 	board at: 'e4' put: (pawn := MyBlackPawn new).
 	pawn moveTo: 'e3'.
 	
-	self
-		assert: pawn moveStrategy asString = [ self defaultMove , self attackSquare ] asString
+	self assert: pawn moveStrategy asString = [ self defaultMove , self attackSquare] asString
 ]
