@@ -10,3 +10,10 @@ MyEmptyPiece >> isPiece [
 	
 	^ false
 ]
+
+{ #category : 'rendering' }
+MyEmptyPiece >> renderPieceOn: aSquare [
+	^ aSquare color isBlack
+				        ifFalse: [ 'z' ]
+				        ifTrue: [ 'x' ] 
+]
