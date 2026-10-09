@@ -84,7 +84,7 @@ MyKing >> targetSquaresLegal: aBoolean [
 		                     e attackingSquares ].
 
 	^ self basicTargetSquares select: [ :s |
-		  s notNil and: [
+		  s isSquare and: [
 			  (threatenedSquares includes: s) not and: [
 				  s hasPiece not or: [ 
 					"The square has an opponent piece"
