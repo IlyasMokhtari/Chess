@@ -240,6 +240,6 @@ MyPiece >> upRightDiagonal [
 MyPiece >> upRightDiagonalLegal: aBoolean [
 
 	^ self
-		  collectSquares: [ :aSquare | aSquare up ifNotNil: #right ]
+		  collectSquares: [ :aSquare | aSquare up isSquare ifTrue: #right ]
 		  legal: aBoolean
 ]
