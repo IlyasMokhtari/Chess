@@ -21,14 +21,14 @@ MyKnight >> renderPieceOn: aSquare [
 MyKnight >> targetSquaresLegal: aBoolean [
 
 	^ {
-		  (square right ifNotNil: [ :p | p right ifNotNil: #up ]).
-		  (square right ifNotNil: [ :p | p right ifNotNil: #down ]).
-		  (square left ifNotNil: [ :p | p left ifNotNil: #up ]).
-		  (square left ifNotNil: [ :p | p left ifNotNil: #down ]).
-		  (square up ifNotNil: [ :p | p up ifNotNil: #left ]).
-		  (square up ifNotNil: [ :p | p up ifNotNil: #right ]).
-		  (square down ifNotNil: [ :p | p down ifNotNil: #left ]).
-		  (square down ifNotNil: [ :p | p down ifNotNil: #right ]) }
+		  (square right isSquare ifTrue: [ :p | p right isSquare ifTrue: #up ]).
+		  (square right isSquare ifTrue: [ :p | p right isSquare ifTrue: #down ]).
+		  (square left isSquare ifTrue: [ :p | p left isSquare ifTrue: #up ]).
+		  (square left isSquare ifTrue: [ :p | p left isSquare ifTrue: #down ]).
+		  (square up isSquare ifTrue: [ :p | p up isSquare ifTrue: #left ]).
+		  (square up isSquare ifTrue: [ :p | p up isSquare ifTrue: #right ]).
+		  (square down isSquare ifTrue: [ :p | p down isSquare ifTrue: #left ]).
+		  (square down isSquare ifTrue: [ :p | p down isSquare ifTrue: #right ]) }
 		  select: [ :s |
 			  s notNil and: [ s hasPiece not or: [ s contents color ~= color ] ] ]
 ]
