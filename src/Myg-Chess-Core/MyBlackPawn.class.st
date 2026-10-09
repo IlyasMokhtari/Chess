@@ -12,7 +12,7 @@ MyBlackPawn >> attackSquare [
 	squareList add: square down left;
 	add: square down right.
 	
-   squareList:= squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
+   squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
 	squareList addAll: self enPassant .
 	^squareList 
 ]

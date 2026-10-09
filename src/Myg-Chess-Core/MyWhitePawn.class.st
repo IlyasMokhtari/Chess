@@ -12,7 +12,7 @@ MyWhitePawn >> attackSquare [
 	squareList add: square up left;
 	add: square up right.
 	
-   squareList:= squareList select: [ :s | s notNil and: [  s hasPiece and: [ s contents color ~= color] ]].
+   squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
    squareList addAll: self enPassant .
 	^squareList
 ]

@@ -18,3 +18,8 @@ Class {
 MyEmptyChessSquare >> hasPiece [
 	^false
 ]
+
+{ #category : 'testing' }
+MyEmptyChessSquare >> isSquare [
+	^false
+]
