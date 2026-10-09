@@ -27,7 +27,7 @@ MyPawn >> enPassantSquare [
         add: square left;
         add: square right.
     ^ squareList select: [ :s |
-        s notNil and: [
+        s isSquare and: [
             s hasPiece and: [
                 s contents color ~= color and: [
                     s contents movedTwoSquare
