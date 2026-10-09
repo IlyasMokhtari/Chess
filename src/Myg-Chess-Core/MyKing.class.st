@@ -16,14 +16,14 @@ MyKing >> basicTargetSquares [
 
 	"The king can move one square on each direction including diagonals"
 	^ {
-		square ifNotNil: #right.
-		square up ifNotNil: #right.
-		square ifNotNil: #up.
-		square up ifNotNil: #left.
-		square ifNotNil: #left.
-		square left ifNotNil: #down.
-		square ifNotNil: #down.
-		square down ifNotNil: #right
+		square isSquare ifTrue: #right.
+		square up isSquare ifTrue: #right.
+		square isSquare ifTrue: #up.
+		square up isSquare ifTrue: #left.
+		square isSquare ifTrue: #left.
+		square left isSquare ifTrue: #down.
+		square isSquare ifTrue: #down.
+		square down isSquare ifTrue: #right
 	}
 ]
 
