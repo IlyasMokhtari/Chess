@@ -14,6 +14,11 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
+{ #category : 'instance creation' }
+MyEmptyChessSquare >> down [
+	^self
+]
+
 { #category : 'testing' }
 MyEmptyChessSquare >> hasPiece [
 	^false
@@ -22,4 +27,19 @@ MyEmptyChessSquare >> hasPiece [
 { #category : 'testing' }
 MyEmptyChessSquare >> isSquare [
 	^false
+]
+
+{ #category : 'instance creation' }
+MyEmptyChessSquare >> left [
+	^self
+]
+
+{ #category : 'instance creation' }
+MyEmptyChessSquare >> right [
+	^self
+]
+
+{ #category : 'instance creation' }
+MyEmptyChessSquare >> up [ 
+	^self
 ]
