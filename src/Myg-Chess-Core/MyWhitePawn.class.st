@@ -51,5 +51,5 @@ MyWhitePawn >> initialize [
 { #category : 'accessing' }
 MyWhitePawn >> moveTo: aSquare [
     movedTwoSquare := square up up == aSquare.
-    super moveTo: aSquare
+    ^super moveTo: aSquare
 ]

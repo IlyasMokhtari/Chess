@@ -70,9 +70,10 @@ MyPawn >> moveStrategy [
 
 { #category : 'accessing' }
 MyPawn >> moveTo: aSquare [
-	(super moveTo: aSquare) ifTrue:[
-	moveStrategy := [ self defaultMove , self attackSquare]
-	]
+	(super moveTo: aSquare) ifFalse:[ ^ false].
+	
+	moveStrategy := [ self defaultMove , self attackSquare].
+	^true
 ]
 
 { #category : 'as yet unclassified' }

@@ -56,5 +56,5 @@ MyBlackPawn >> initialize [
 { #category : 'accessing' }
 MyBlackPawn >> moveTo: aSquare [
     movedTwoSquare := square down down == aSquare.
-    super moveTo: aSquare
+    ^super moveTo: aSquare
 ]
