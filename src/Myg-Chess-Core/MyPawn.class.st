@@ -30,7 +30,9 @@ MyPawn >> enPassantSquare [
         s isSquare and: [
             s hasPiece and: [
                 s contents color ~= color and: [
-                    s contents movedTwoSquare
+										 s contents isPawn and: [
+                    	s contents movedTwoSquare
+										 ]
                 ]
             ]
         ]
@@ -52,7 +54,13 @@ MyPawn >> id [
 MyPawn >> initialize [ 
 	super initialize.
 	moveStrategy := [ self firstMove, self attackSquare ].
+	movedTwoSquare := false.
 	
+]
+
+{ #category : 'rendering' }
+MyPawn >> isPawn [ 
+	^true
 ]
 
 { #category : 'accessing' }
