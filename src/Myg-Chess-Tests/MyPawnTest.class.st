@@ -20,7 +20,7 @@ MyPawnTest >> testMovedPawnSetTheMoveStrategyToDefault [
 	|pawn squares board|
 	board := MyChessBoard empty.
 	board at: 'e4' put: (pawn := MyBlackPawn new).
-	pawn moveTo: 'e3'.
+	pawn moveTo: (board at: 'e3').
 	
 	self assert: pawn moveStrategy asString = [ self defaultMove , self attackSquare] asString
 ]
