@@ -31,7 +31,7 @@ MyPawn >> enPassantSquare [
             s hasPiece and: [
                 s contents color ~= color and: [
 										 s contents isPawn and: [
-                    	s contents movedTwoSquare
+                    		s contents movedTwoSquare
 										 ]
                 ]
             ]
