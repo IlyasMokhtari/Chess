@@ -24,6 +24,11 @@ MyEmptyChessSquare >> hasPiece [
 	^false
 ]
 
+{ #category : 'highlighting' }
+MyEmptyChessSquare >> highlightTarget [
+	^self.
+]
+
 { #category : 'testing' }
 MyEmptyChessSquare >> isSquare [
 	^false
@@ -37,6 +42,11 @@ MyEmptyChessSquare >> left [
 { #category : 'instance creation' }
 MyEmptyChessSquare >> right [
 	^self
+]
+
+{ #category : 'highlighting' }
+MyEmptyChessSquare >> unhighlightTarget [
+	^self.
 ]
 
 { #category : 'instance creation' }
