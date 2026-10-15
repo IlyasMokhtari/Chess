@@ -10,18 +10,30 @@ Class {
 }
 
 { #category : 'accessing' }
-MyPawn >> attackSquare [
-	self subclassResponsibility.
+MyPawn >> attackSquare [ 
+	|squareList|
+	squareList := self possibleAttackSquare.
+	squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
+	squareList addAll: self enPassant.
+	^squareList 
 ]
 
 { #category : 'accessing' }
 MyPawn >> attackingSquares [
-	^self possibleAttackSquare.
+	|squareList|
+	squareList := self possibleAttackSquare.
+	squareList addAll: self enPassant.
+	^ squareList 
 ]
 
 { #category : 'as yet unclassified' }
 MyPawn >> defaultMove [
 	self subclassResponsibility.
+]
+
+{ #category : 'as yet unclassified' }
+MyPawn >> enPassant [
+	^self subclassResponsibility.
 ]
 
 { #category : 'as yet unclassified' }

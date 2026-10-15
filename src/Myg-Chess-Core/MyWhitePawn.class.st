@@ -5,15 +5,6 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
-{ #category : 'initialization' }
-MyWhitePawn >> attackSquare [ 
-	|squareList|
-	squareList := self possibleAttackSquare.
-	
-   squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
-	^squareList
-]
-
 { #category : 'as yet unclassified' }
 MyWhitePawn >> defaultMove [
 	|squareList|
@@ -57,6 +48,5 @@ MyWhitePawn >> possibleAttackSquare [
 	squareList := OrderedCollection new.
 	squareList add: square up left;
 	add: square up right.
-   squareList addAll: self enPassant .
 	^squareList
 ]
