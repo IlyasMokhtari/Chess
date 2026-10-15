@@ -17,7 +17,8 @@ MyBlackPawn >> defaultMove [
 
 { #category : 'as yet unclassified' }
 MyBlackPawn >> enPassant [
-	^self enPassantSquare collect: [ :s | s down ].
+	enPassantSquare :=self enPassantSquare collect: [ :s | s down ].
+	^enPassantSquare.
 ]
 
 { #category : 'as yet unclassified' }
@@ -43,8 +44,12 @@ MyBlackPawn >> initialize [
 
 { #category : 'accessing' }
 MyBlackPawn >> moveTo: aSquare [
+	|result  temp|
     movedTwoSquare := square down down == aSquare.
-    ^super moveTo: aSquare
+	temp:= enPassantSquare.
+    result :=super moveTo: aSquare.
+	 temp size ==0 ifFalse:[(self square = temp first) ifTrue: [self square up emptyContents ]].
+	^result
 ]
 
 { #category : 'accessing' }

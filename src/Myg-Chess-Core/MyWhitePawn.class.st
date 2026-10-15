@@ -15,7 +15,8 @@ MyWhitePawn >> defaultMove [
 
 { #category : 'as yet unclassified' }
 MyWhitePawn >> enPassant [
-	^self enPassantSquare collect: [ :s | s up ]
+	enPassantSquare :=self enPassantSquare collect: [ :s | s up].
+	^enPassantSquare.
 ]
 
 { #category : 'as yet unclassified' }
@@ -38,8 +39,12 @@ MyWhitePawn >> initialize [
 
 { #category : 'accessing' }
 MyWhitePawn >> moveTo: aSquare [
+	|result  temp|
     movedTwoSquare := square up up == aSquare.
-    ^super moveTo: aSquare
+	temp:= enPassantSquare.
+    result :=super moveTo: aSquare.
+	 temp size ==0 ifFalse:[(self square = temp first) ifTrue: [self square down emptyContents ]].
+	^result.
 ]
 
 { #category : 'initialization' }

@@ -3,7 +3,8 @@ Class {
 	#superclass : 'MyPiece',
 	#instVars : [
 		'moveStrategy',
-		'movedTwoSquare'
+		'movedTwoSquare',
+		'enPassantSquare'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -15,6 +16,7 @@ MyPawn >> attackSquare [
 	squareList := self possibleAttackSquare.
 	squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
 	squareList addAll: self enPassant.
+	enPassantSquare := self enPassant.
 	^squareList 
 ]
 
@@ -72,6 +74,7 @@ MyPawn >> initialize [
 	super initialize.
 	moveStrategy := [ self firstMove, self attackSquare ].
 	movedTwoSquare := false.
+	enPassantSquare := MyEmptyChessSquare new.
 	
 ]
 
