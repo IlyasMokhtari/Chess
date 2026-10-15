@@ -8,12 +8,9 @@ Class {
 { #category : 'initialization' }
 MyWhitePawn >> attackSquare [ 
 	|squareList|
-	squareList := OrderedCollection new.
-	squareList add: square up left;
-	add: square up right.
+	squareList := self possibleAttackSquare.
 	
    squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
-   squareList addAll: self enPassant .
 	^squareList
 ]
 
@@ -52,4 +49,14 @@ MyWhitePawn >> initialize [
 MyWhitePawn >> moveTo: aSquare [
     movedTwoSquare := square up up == aSquare.
     ^super moveTo: aSquare
+]
+
+{ #category : 'initialization' }
+MyWhitePawn >> possibleAttackSquare [ 
+	|squareList|
+	squareList := OrderedCollection new.
+	squareList add: square up left;
+	add: square up right.
+   squareList addAll: self enPassant .
+	^squareList
 ]

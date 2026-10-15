@@ -8,12 +8,8 @@ Class {
 { #category : 'accessing' }
 MyBlackPawn >> attackSquare [ 
 	|squareList|
-	squareList := OrderedCollection new.
-	squareList add: square down left;
-	add: square down right.
-	
-   squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
-	squareList addAll: self enPassant .
+	squareList := self possibleAttackSquare.
+	squareList:= squareList select: [ :s | s isSquare and: [  s hasPiece and: [ s contents color ~= color] ]].
 	^squareList 
 ]
 
@@ -57,4 +53,14 @@ MyBlackPawn >> initialize [
 MyBlackPawn >> moveTo: aSquare [
     movedTwoSquare := square down down == aSquare.
     ^super moveTo: aSquare
+]
+
+{ #category : 'accessing' }
+MyBlackPawn >> possibleAttackSquare [ 
+	|squareList|
+	squareList := OrderedCollection new.
+	squareList add: square down left;
+	add: square down right.
+	squareList addAll: self enPassant .
+	^squareList 
 ]

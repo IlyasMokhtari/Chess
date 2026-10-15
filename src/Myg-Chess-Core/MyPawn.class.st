@@ -14,6 +14,11 @@ MyPawn >> attackSquare [
 	self subclassResponsibility.
 ]
 
+{ #category : 'accessing' }
+MyPawn >> attackingSquares [
+	^self possibleAttackSquare.
+]
+
 { #category : 'as yet unclassified' }
 MyPawn >> defaultMove [
 	self subclassResponsibility.
@@ -79,6 +84,11 @@ MyPawn >> moveTo: aSquare [
 { #category : 'as yet unclassified' }
 MyPawn >> movedTwoSquare [
 	^ movedTwoSquare
+]
+
+{ #category : 'accessing' }
+MyPawn >> possibleAttackSquare [
+	self subclassResponsibility 
 ]
 
 { #category : 'rendering' }
