@@ -15,6 +15,11 @@ Class {
 }
 
 { #category : 'instance creation' }
+MyEmptyChessSquare >> doUnselect [
+	^self
+]
+
+{ #category : 'instance creation' }
 MyEmptyChessSquare >> down [
 	^self
 ]
