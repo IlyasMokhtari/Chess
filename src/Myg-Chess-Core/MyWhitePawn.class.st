@@ -43,7 +43,7 @@ MyWhitePawn >> moveTo: aSquare [
     movedTwoSquare := square up up == aSquare.
 	temp:= enPassantSquare.
     result :=super moveTo: aSquare.
-	 temp size ==0 ifFalse:[(self square = temp first) ifTrue: [self square down emptyContents ]].
+	 temp ifNotEmpty:[(self square = temp first) ifTrue: [self square down emptyContents ]].
 	^result.
 ]
 
