@@ -21,14 +21,13 @@ MyKnight >> renderPieceOn: aSquare [
 MyKnight >> targetSquaresLegal: aBoolean [
 
 	^ {
-		  (square right isSquare ifTrue: [ :p | p right isSquare ifTrue: #up ]).
-		  (square right isSquare ifTrue: [ :p | p right isSquare ifTrue: #down ]).
-		  (square left isSquare ifTrue: [ :p | p left isSquare ifTrue: #up ]).
-		  (square left isSquare ifTrue: [ :p | p left isSquare ifTrue: #down ]).
-		  (square up isSquare ifTrue: [ :p | p up isSquare ifTrue: #left ]).
-		  (square up isSquare ifTrue: [ :p | p up isSquare ifTrue: #right ]).
-		  (square down isSquare ifTrue: [ :p | p down isSquare ifTrue: #left ]).
-		  (square down isSquare ifTrue: [ :p | p down isSquare ifTrue: #right ]) }
-		  select: [ :s |
-			  s notNil and: [ s hasPiece not or: [ s contents color ~= color ] ] ]
+		 square right right up.
+		 square right right down.
+		 square left left up.
+		 square left left down.
+		 square up up left.
+		 square up up right.
+		 square down down left.
+		 square down down right }
+		 select: [ :s | s isSquare and: [s hasPiece not or: [s contents color ~= color]]]
 ]
